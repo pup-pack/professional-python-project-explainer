@@ -1,0 +1,227 @@
+# annotations.toml - reusable, repository-independent explainer catalog.
+#
+# Each repository tree is fetched live and joined against these entries.
+# Resolution precedence, most specific first:
+#   1. [paths."<exact/relative/path>"]   exact repository-relative path
+#   2. [directories."<name>"]            any directory with this basename
+#   3. [names."<basename>"]              any file with this basename
+#   4. [[globs]]  match = "<pattern>"    fnmatch glob, in listed order (* spans /)
+#   5. [defaults.file] / [defaults.directory]
+#
+# "attention = true" highlights entries that hold key project-specific content
+# (the things a student authors or edits), rather than shared boilerplate.
+
+[root]
+attention = false
+description = "Root directory of the selected repository."
+rationale = "Keeps project code, data, documentation, tests, configuration, and automation together in one version-controlled project."
+
+[defaults.file]
+attention = false
+description = "Project file."
+rationale = "Part of the repository's tracked contents."
+
+[defaults.directory]
+attention = false
+description = "Project directory."
+rationale = "Groups related files within the repository."
+
+# --------------------------------------------------------------------------
+# Directories (matched by basename)
+# --------------------------------------------------------------------------
+
+[directories."src"]
+attention = true
+description = "Source directory holding the importable package."
+rationale = "The src layout keeps importable code separate from project tooling, so tests run against the installed package rather than the working tree."
+
+[directories."tests"]
+attention = true
+description = "Automated test suite."
+rationale = "Holds the project-specific tests that verify the package behaves as intended."
+
+[directories."docs"]
+attention = true
+description = "Project documentation source."
+rationale = "Holds the authored documentation content published for the project."
+
+[directories.".github"]
+attention = false
+description = "GitHub configuration and automation."
+rationale = "Holds workflows and repository settings that GitHub reads by convention."
+
+[directories."workflows"]
+attention = false
+description = "GitHub Actions workflow definitions."
+rationale = "Each workflow file defines automation that GitHub runs on repository events."
+
+[directories.".vscode"]
+attention = false
+description = "Shared Visual Studio Code settings."
+rationale = "Gives everyone opening the project the same editor configuration and recommended extensions."
+
+[directories.".annotations"]
+attention = false
+description = "Repository annotation metadata."
+rationale = "Separates repository annotations from source code and documentation."
+
+[directories."data"]
+attention = true
+description = "Project data directory."
+rationale = "Holds the datasets the project reads, kept under version control alongside the code that uses them."
+
+# --------------------------------------------------------------------------
+# Files (matched by basename)
+# --------------------------------------------------------------------------
+
+[names."README.md"]
+attention = true
+description = "Primary project readme."
+rationale = "The first thing a reader sees; describes what the project is and how to use it."
+
+[names."pyproject.toml"]
+attention = true
+description = "Project and tooling configuration."
+rationale = "Declares the package metadata, dependencies, and tool settings in one standard file."
+
+[names."uv.lock"]
+attention = false
+description = "Resolved dependency lock file."
+rationale = "Pins exact dependency versions so environments are reproducible; managed by uv, not edited by hand."
+
+[names.".python-version"]
+attention = false
+description = "Pinned Python interpreter version."
+rationale = "Tells uv and other tools which Python version to use for the project."
+
+[names.".gitignore"]
+attention = false
+description = "Git ignore rules."
+rationale = "Keeps generated and local files out of version control."
+
+[names.".gitattributes"]
+attention = false
+description = "Git path attributes."
+rationale = "Normalizes line endings and marks how Git should treat specific paths."
+
+[names.".editorconfig"]
+attention = false
+description = "Shared editor configuration."
+rationale = "Defines consistent indentation, line endings, and final newlines across editors."
+
+[names.".pre-commit-config.yaml"]
+attention = false
+description = "Pre-commit hook configuration."
+rationale = "Runs formatters and linters automatically before each commit."
+
+[names.".markdownlint.json"]
+attention = false
+description = "Markdown lint configuration."
+rationale = "Defines the style rules applied to Markdown files."
+
+[names."zensical.toml"]
+attention = false
+description = "Documentation site configuration."
+rationale = "Configures how the documentation is built and published."
+
+[names."LICENSE"]
+attention = false
+description = "Project license."
+rationale = "States the terms under which others may use the project."
+
+[names."CITATION.cff"]
+attention = false
+description = "Citation metadata."
+rationale = "Lets others cite the project in a standard, machine-readable form."
+
+[names."AGENTS.md"]
+attention = false
+description = "Guidance for AI coding agents."
+rationale = "Gives automated assistants project-specific conventions to follow."
+
+[names."AI_USE.md"]
+attention = false
+description = "AI-use disclosure."
+rationale = "Documents how AI tools were used in the project."
+
+[names."conftest.py"]
+attention = false
+description = "Shared pytest fixtures and configuration."
+rationale = "Provides fixtures available to the whole test suite; infrastructure rather than a test itself."
+
+[names."__init__.py"]
+attention = false
+description = "Package marker."
+rationale = "Marks a directory as an importable Python package."
+
+[names."py.typed"]
+attention = false
+description = "Typing marker."
+rationale = "Signals that the package ships inline type information for type checkers."
+
+[names.".gitkeep"]
+attention = false
+description = "Directory placeholder."
+rationale = "Keeps an otherwise-empty directory under version control."
+
+# --------------------------------------------------------------------------
+# Globs (checked in listed order; * also spans /)
+# --------------------------------------------------------------------------
+
+[[globs]]
+match = "src/*.py"
+attention = true
+description = "Package source module."
+rationale = "Project-specific code that a student writes and maintains."
+
+[[globs]]
+match = "tests/*.py"
+attention = true
+description = "Test module."
+rationale = "Project-specific tests that check the package's behavior."
+
+[[globs]]
+match = "docs/*.md"
+attention = true
+description = "Documentation page."
+rationale = "Authored documentation content for the project."
+
+[[globs]]
+match = "data/*"
+attention = true
+description = "Dataset file."
+rationale = "A dataset the project reads, versioned alongside the code."
+
+[[globs]]
+match = ".github/workflows/*"
+attention = false
+description = "GitHub Actions workflow."
+rationale = "Defines automation GitHub runs on repository events."
+
+[[globs]]
+match = ".vscode/*"
+attention = false
+description = "VS Code workspace configuration."
+rationale = "Defines project-specific settings and tasks for the Visual Studio Code editor."
+
+[paths.".vscode/extensions.json"]
+attention = false
+description = "Recommended VS Code extensions."
+rationale = "Prompts anyone opening the project to install the extensions it expects, so everyone gets the same tooling."
+
+[paths.".vscode/settings.json"]
+attention = false
+description = "Workspace VS Code settings."
+rationale = "Applies project-specific editor settings for everyone who opens the folder, overriding personal defaults for this project only."
+
+[[globs]]
+match = "*.ps1"
+attention = false
+description = "PowerShell helper script."
+rationale = "A convenience script for common project tasks on Windows."
+
+[[globs]]
+match = "*.log"
+attention = false
+description = "Generated log file."
+rationale = "Captures output from a project task; not edited by hand."
