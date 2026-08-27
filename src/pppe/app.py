@@ -1,11 +1,3 @@
-# /// script
-# requires-python = ">=3.14"
-# dependencies = [
-#     "eda-vizkit",
-#     "marimo",
-#     "pandas",
-# ]
-# ///
 """app.py - interactive explainer.
 
 Author: Denise Case
