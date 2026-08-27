@@ -168,7 +168,7 @@ def test_filter_and_index_items() -> None:
 def test_public_toml_files_load() -> None:
     project = load_project_meta(PUBLIC_DIR / "data.toml")
     repo_urls = load_repo_list(PUBLIC_DIR / "repos.toml")
-    annotations = load_annotations(PUBLIC_DIR / "annotations.toml")
+    annotations = load_annotations(PUBLIC_DIR / "explainer-catalog.toml")
 
     assert project["title"]
     assert repo_urls

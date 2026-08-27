@@ -17,14 +17,7 @@ readme = "README.md"
 requires-python = ">=3.14"
 version = "0.1.0"
 
-dependencies = [
-    # REQ.DEPS: External packages used by the project code.
-    "datafun-toolkit", # WHY: Privacy-preserving logging
-    "eda-vizkit", # WHY: Exploratory data analysis visualization toolkit
-    "pandas",     # WHY: Data manipulation and analysis
-    "seaborn",    # WHY: Statistical data visualization
-    "matplotlib", # WHY: General-purpose plotting library
-]
+dependencies = []
 
 [dependency-groups]
 # WHY: Dependency groups provide tooling used to develop, document,
@@ -40,11 +33,11 @@ dev = [
     "ty",         # WHY: Type checking for static analysis and type safety.
 ]
 
-docs = [
-    # REQ.DOCS.DEPS: External packages used to generate project documentation.
-    "zensical", # WHY: Minimalistic static site generator for project documentation.
-    "mkdocstrings[python]", # WHY: Auto-generate API docs from Python docstrings.
-]
+# docs = [
+#     # REQ.DOCS.DEPS: External packages used to generate project documentation.
+#     "zensical", # WHY: Minimalistic static site generator for project documentation.
+#     "mkdocstrings[python]", # WHY: Auto-generate API docs from Python docstrings.
+# ]
 
 notebooks = [
     # REQ.NOTEBOOKS.DEPS: Interactive notebook environments used to explore

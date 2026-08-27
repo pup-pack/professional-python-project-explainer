@@ -6,14 +6,20 @@
 [![Python 3.14](https://img.shields.io/badge/python-3.14%2B-blue?logo=python)](./pyproject.toml)
 [![uv managed](https://img.shields.io/badge/uv-managed-DE5FE9)](https://docs.astral.sh/uv/)
 [![ty type checked](https://img.shields.io/badge/ty-type_checked-2F80ED)](https://docs.astral.sh/ty/)
-[![Zensical docs](https://img.shields.io/badge/Zensical-docs-purple)](https://zensical.org/)
-[![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/pup-pack/pup-clean/blob/main/LICENSE)
+[![MIT](https://img.shields.io/badge/license-MIT-yellow.svg)](https://github.com/pup-pack/professional-python-project-explainer/blob/main/LICENSE)
 
-> A Marimo app that explains common files and folders in a professional Python project.
+> A Marimo app that explains common files and folders in current public GitHub repositories.
 
 ## Open the App
 
-- [Professional Python Project Explorer](https://pup-pack.github.io/professional-python-project-explainer/)
+- [Professional Python Project Explainer](https://pup-pack.github.io/professional-python-project-explainer/)
+
+## How It Works
+
+- Repository choices are loaded from `src/pppe/public/repos.toml`.
+- The selected repository tree is fetched live from GitHub.
+- Common files and folders are explained using `src/pppe/public/explainer-catalog.toml`.
+- The repository tree is not stored and reflects the current repository shape.
 
 ## Run
 
@@ -64,10 +70,9 @@ uv run pre-commit run --all-files
 # run locally to test
 uv run marimo run src/pppe/app.py
 
-# types, tests, docs
+# check types and run tests
 uv run ty check
 uv run python -m pytest
-uv run python -m zensical build
 
 # save progress
 git add -A
@@ -77,18 +82,18 @@ git push -u origin main
 
 </details>
 
-## Documentation
+## Explainer Catalog
 
-- [Documentation](https://pup-pack.github.io/professional-python-project-explainer/)
+[Explainer Catalog](src/pppe/public/annoexplainer-catalogtations.toml)
 
 ## Annotations
 
-[.annotations/annotations.md](.annotations/annotations.md)
+[Annotations](.annotations/annotations.md)
 
 ## Citation
 
-[CITATION.cff](CITATION.cff)
+[CITATION.cff](./CITATION.cff))
 
 ## License
 
-[MIT](LICENSE)
+[MIT](./LICENSE)

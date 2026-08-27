@@ -128,7 +128,7 @@ def _load_static_data(
     public_path = notebook_location / "public"
     project_data_path = public_path / "data.toml"
     repo_data_path = public_path / "repos.toml"
-    annotations_path = public_path / "annotations.toml"
+    annotations_path = public_path / "explainer-catalog.toml"
 
     project = load_project_meta(project_data_path)
     repo_urls = load_repo_list(repo_data_path)

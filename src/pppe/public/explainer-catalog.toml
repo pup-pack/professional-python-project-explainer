@@ -1,4 +1,4 @@
-# annotations.toml - reusable, repository-independent explainer catalog.
+# explainer-catalog.toml - reusable, repository-independent explainer catalog.
 #
 # Each repository tree is fetched live and joined against these entries.
 # Resolution precedence, most specific first:
@@ -186,6 +186,26 @@ attention = true
 description = "Documentation page."
 rationale = "Authored documentation content for the project."
 
+[paths."docs/api.md"]
+attention = false
+description = "API documentation page."
+rationale = "Provides an overview of the project's API for developers."
+
+[paths."docs/concepts.md"]
+attention = true
+description = "Concepts documentation page."
+rationale = "Provides an overview of the project's key concepts."
+
+[paths."docs/data-card.md"]
+attention = true
+description = "Data card documentation page."
+rationale = "Provides an overview of the project's data card for developers."
+
+[paths."docs/index.md"]
+attention = true
+description = "Project documentation homepage."
+rationale = "Provides the main entry point for the project's documentation."
+
 [[globs]]
 match = "data/*"
 attention = true
@@ -197,12 +217,6 @@ match = ".github/workflows/*"
 attention = false
 description = "GitHub Actions workflow."
 rationale = "Defines automation GitHub runs on repository events."
-
-[[globs]]
-match = ".vscode/*"
-attention = false
-description = "VS Code workspace configuration."
-rationale = "Defines project-specific settings and tasks for the Visual Studio Code editor."
 
 [paths.".vscode/extensions.json"]
 attention = false

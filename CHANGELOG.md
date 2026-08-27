@@ -13,9 +13,18 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ---
 
-## [0.2.0] - 2026-08-26
+## [0.1.0] - 2026-08-27
 
-- Initial release depends on pup-core version 0.2.0.
+### Added
+
+- Initial Professional Python Project Explainer.
+- Interactive Marimo interface for exploring professional Python repositories.
+- Repository selector backed by a reusable TOML repository list.
+- Live repository file and folder trees retrieved from GitHub.
+- Reusable explainer catalog for common project files and directories.
+- Highlighted project-specific content.
+- Clickable tree entries with descriptions and rationales.
+- WebAssembly deployment support.
 
 ---
 
@@ -37,7 +46,7 @@ Follow these steps when creating a new release.
 
 1. Update `CITATION.cff`: change `version` and `date-released`
 2. Update `CHANGELOG.md`: move from unreleased, add entry, update links
-3. Update `pyproject.toml`: update `[tool.hatch.version] fallback-version`
+3. Update `pyproject.toml`: update `project.version`
 
 ### Task 2. Validate
 
@@ -51,7 +60,7 @@ uv sync
 uv run pre-commit install
 uv run pre-commit autoupdate
 
-uv run pup-down
+uv run marimo run src/pppe/app.py
 
 git add -A
 uv run pre-commit run --all-files
@@ -61,15 +70,6 @@ uv run pre-commit run --all-files
 uv run python -m pytest
 uv run ty check
 uv run python -m zensical build
-
-<!-- markdownlint-disable MD013 -->
-
-uv run python -c "import shutil; from pathlib import Path; shutil.rmtree(Path('dist'), ignore_errors=True)"
-
-<!-- markdownlint-enable MD013 -->
-
-uv build
-uvx twine check dist/*
 ```
 
 ### Task 3. Commit, push, tag
@@ -96,8 +96,7 @@ git push origin :refs/tags/vX.Z.Y
 
 ## Links
 
-[Unreleased]: https://github.com/pup-pack/pup-down/compare/v0.2.0...HEAD
-[0.2.0]: https://github.com/pup-pack/pup-down/releases/tag/v0.2.0
-[0.1.0]: https://github.com/pup-pack/pup-down/releases/tag/v0.1.0
+[Unreleased]: https://github.com/pup-pack/professional-python-project-explainer/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/pup-pack/professional-python-project-explainer/releases/tag/v0.1.0
 
 <!-- markdownlint-enable MD024 -->
