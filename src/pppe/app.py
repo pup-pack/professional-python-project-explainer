@@ -16,14 +16,6 @@ REQUIREMENTS:
 1. Add marimo to notebooks in pyproject.toml
 2. Install the required dependencies using `uv sync`.
 
-ABOUT THE FILE OPENING ABOVE:
-
-Marimo's WASM dependency mechanism
-uses the notebook's PEP 723 metadata.
-Marimo's current WASM guidance says that
-without a script block first, imported packages
-do not auto-install in WASM.
-
 NO LOGGING:
 
 In this notebook, we do not configure logging because a browser-based
