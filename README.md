@@ -16,22 +16,22 @@
 
 ## How It Works
 
-- Repository choices are loaded from `src/pppe/public/repos.toml`.
+- Repository choices are loaded from `src/public/repos.toml`.
 - The selected repository tree is fetched live from GitHub.
-- Common files and folders are explained using `src/pppe/public/explainer-catalog.toml`.
+- Common files and folders are explained using `src/public/explainer-catalog.toml`.
 - The repository tree is not stored and reflects the current repository shape.
 
 ## Run
 
 ```powershell
 uv sync
-uv run marimo run src/pppe/app.py
+uv run marimo run src/app.py
 ```
 
 ## Edit
 
 ```powershell
-uv run marimo edit src/pppe/app.py
+uv run marimo edit src/app.py
 ```
 
 ## Developer Command Reference
@@ -68,7 +68,7 @@ uv run pre-commit run --all-files
 uv run pre-commit run --all-files
 
 # run locally to test
-uv run marimo run src/pppe/app.py
+uv run marimo run src/app.py
 
 # check types and run tests
 uv run ty check
@@ -84,7 +84,7 @@ git push -u origin main
 
 ## Explainer Catalog
 
-[Explainer Catalog](src/pppe/public/annoexplainer-catalogtations.toml)
+[Explainer Catalog](src/public/annoexplainer-catalogtations.toml)
 
 ## Annotations
 

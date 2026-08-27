@@ -1,9 +1,9 @@
-"""Tests for pppe.app_core."""
+"""Tests for app_core."""
 
 from pathlib import Path
 from typing import Any
 
-from pppe.app_core import (
+from app_core import (
     build_tree_items,
     filter_items,
     get_item_by_path,
@@ -16,7 +16,7 @@ from pppe.app_core import (
     resolve_annotation,
 )
 
-PUBLIC_DIR = Path(__file__).parents[1] / "src" / "pppe" / "public"
+PUBLIC_DIR = Path(__file__).parents[1] / "src" / "public"
 
 
 def make_annotations() -> dict[str, Any]:
@@ -39,7 +39,7 @@ def make_annotations() -> dict[str, Any]:
             },
         },
         "paths": {
-            "src/pppe/app.py": {
+            "src/app.py": {
                 "attention": True,
                 "description": "Exact application module.",
                 "rationale": "Runs the application.",
@@ -82,7 +82,7 @@ def test_annotation_resolution_precedence() -> None:
 
     exact = resolve_annotation(
         annotations,
-        path="src/pppe/app.py",
+        path="src/app.py",
         is_dir=False,
     )
     named = resolve_annotation(
@@ -92,7 +92,7 @@ def test_annotation_resolution_precedence() -> None:
     )
     globbed = resolve_annotation(
         annotations,
-        path="src/pppe/utils.py",
+        path="src/utils.py",
         is_dir=False,
     )
     directory = resolve_annotation(
@@ -115,13 +115,12 @@ def test_annotation_resolution_precedence() -> None:
 
 def test_tree_is_sorted_alphabetically() -> None:
     entries = (
-        ("README.md", False),
         ("data", True),
         ("data/z.csv", False),
         ("data/A.csv", False),
+        ("README.md", False),
         ("src", True),
-        ("src/pppe", True),
-        ("src/pppe/app.py", False),
+        ("src/app.py", False),
     )
 
     items = build_tree_items(
@@ -139,8 +138,7 @@ def test_tree_is_sorted_alphabetically() -> None:
         "│   └── z.csv",
         "├── README.md",
         "└── src/",
-        "    └── pppe/",
-        "        └── app.py",
+        "    └── app.py",
     ]
 
 

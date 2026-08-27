@@ -34,7 +34,7 @@ jobs:
 
       - name: B1) Export Marimo app
         run: |
-          uv run marimo export html-wasm src/pppe/app.py \
+          uv run marimo export html-wasm src/app.py \
             -o _site \
             --mode run
 

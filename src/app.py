@@ -5,15 +5,15 @@ Date: 2026-08
 
 Run from the repository root with:
 
-    uv run marimo run src/pppe/app.py
+    uv run marimo run src/app.py
 
 Edit with:
 
-    uv run marimo edit src/pppe/app.py
+    uv run marimo edit src/app.py
 
 REQUIREMENTS:
 
-1. Add marimo to notebooks in pyproject.toml
+1. Add marimo to dependencies in pyproject.toml
 2. Install the required dependencies using `uv sync`.
 
 NO LOGGING:
@@ -23,18 +23,18 @@ WASM app has no persistent Python server to store log files.
 
 DATA FILES (in public/):
 
-- repos.toml       the list of repository URLs shown in the dropdown
-- annotations.toml the reusable, repository-independent catalog that
-                   describes common files and folders (description,
-                   rationale, and whether to highlight)
-- data.toml        app metadata (the title)
+- data.toml                 app metadata (the title)
+- repos.toml                list of repository URLs shown in the dropdown
+- explainer-catalog.toml    the reusable, repository-independent catalog that
+                            describes common files and folders (description,
+                            rationale, and whether to highlight)
 
-The repository tree itself is NOT stored. When a repository is selected,
+The repository tree is NOT stored. When a repository is selected,
 its file and folder list is fetched live from the GitHub trees API and
-joined against annotations.toml. Fetches use the same urllib path that
+joined against explainer-catalog.toml. Fetches use the same urllib path that
 loads the TOML files, which marimo patches for WASM via pyodide-http.
 Unauthenticated GitHub requests are limited to 60 per hour per IP, so
-successful fetches are cached and failures surface a clear message.
+successful fetches are cached and failures surface a message.
 
 FIRST: IMPORT AND APP SETUP (ALWAYS)
 
@@ -68,7 +68,7 @@ app = marimo.App(width="full")
 def _imports():
     import marimo as mo
 
-    from pppe.app_core import (
+    from app_core import (
         RepoTreeError,
         build_tree_items,
         fetch_repo_tree,

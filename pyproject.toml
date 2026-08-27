@@ -17,7 +17,9 @@ readme = "README.md"
 requires-python = ">=3.14"
 version = "0.1.0"
 
-dependencies = []
+dependencies = [
+    "marimo>=0.19.7",
+]
 
 [dependency-groups]
 # WHY: Dependency groups provide tooling used to develop, document,
@@ -31,18 +33,6 @@ dev = [
     "pytest-cov", # WHY: Test coverage reporting for quality metrics and CI gating.
     "ruff",       # WHY: Fast linting and formatting for Python code.
     "ty",         # WHY: Type checking for static analysis and type safety.
-]
-
-# docs = [
-#     # REQ.DOCS.DEPS: External packages used to generate project documentation.
-#     "zensical", # WHY: Minimalistic static site generator for project documentation.
-#     "mkdocstrings[python]", # WHY: Auto-generate API docs from Python docstrings.
-# ]
-
-notebooks = [
-    # REQ.NOTEBOOKS.DEPS: Interactive notebook environments used to explore
-    # and present analytical work.
-    "marimo",    # WHY: Run reactive Python notebooks stored as regular .py files.
 ]
 
 # ============================================================
@@ -71,6 +61,7 @@ root = ["./src"] # WHY: Specify the root directory for static type checking.
 
 [tool.pytest.ini_options]
 # WHY: Consistent test discovery and coverage visibility.
+pythonpath = ["src"] # add for marimo apps
 minversion = "9.0"
 testpaths = ["tests"]
 addopts = "--cov=src --cov-fail-under=40 --cov-report=term-missing"
@@ -94,7 +85,7 @@ force-sort-within-sections = true
 "src/**/_version.py" = ["ALL"]  # Auto-generated file; do not lint.
 "tests/**/*.py" = ["D", "B018"] # Tests need no docstrings; B018 is default-on.
 "notebooks/**/*.py" = ["B018", "D", "PLR1711", "RUF059"]
-"src/**/notebook.py" = ["B018", "D", "PLR1711", "RUF059"]   # marimo cells: bare returns + cell-scoped unused vars are the format, not defects
+"src/app.py" = ["B018", "D", "PLR1711", "RUF059"] # marimo
 
 [tool.ruff.lint.pydocstyle] # WHY: Use Google docstring style when D is enabled.
 convention = "google"
@@ -106,20 +97,4 @@ convention = "google"
 # OBS: This keeps the canonical `uv sync` command identical across project types
 #      and ensures all repository features work after setup.
 default-groups = "all"
-
-# ============================================================
-# SECTION 3: BUILD SYSTEM (boilerplate; CUSTOM src/ agreement)
-# ============================================================
-#
-# REQ.PROJECT: A build system MUST be declared for package discovery and publishing.
-# REQ.STRUCTURE: All importable code MUST live under src/.
-# WHY src/ layout: Prevents accidental imports from the repo root;
-#     ensures consistent behavior across IDEs, tests, CI, and PyPI.
-
-[build-system]
-build-backend = "hatchling.build"
-requires = ["hatchling"]
-
-[tool.hatch.build.targets.wheel]
-# CUSTOM: Must match src/ folders.
-packages = ["src/pppe"]  # REQ.PACKAGES: Discovery rooted at src/.
+package = false

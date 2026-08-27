@@ -60,7 +60,7 @@ uv sync
 uv run pre-commit install
 uv run pre-commit autoupdate
 
-uv run marimo run src/pppe/app.py
+uv run marimo run src/app.py
 
 git add -A
 uv run pre-commit run --all-files
