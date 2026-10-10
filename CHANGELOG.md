@@ -13,6 +13,16 @@ and this project adheres to **[Semantic Versioning](https://semver.org/spec/v2.0
 
 ---
 
+## [0.1.1] - 2026-10-10
+
+### Changed
+
+- changed from `.pre-commit-config.yaml` to `prek.toml`
+- professional python update with `uvx pup-up@latest`.
+- added project `docs` and `zensical.toml`
+
+---
+
 ## [0.1.0] - 2026-08-27
 
 ### Added
@@ -51,25 +61,35 @@ Follow these steps when creating a new release.
 ### Task 2. Validate
 
 ```shell
-uv self update
+.\sit.ps1
 
-uv python install
-uv lock --upgrade
-uv sync
+# Update GitHub Actions and pin all action references to immutable SHAs
+uvx gha-tools autoupdate --pin=all --write .github/workflows
 
-uv run pre-commit install
-uv run pre-commit autoupdate
+# Then audit the resulting GitHub configuration for security findings
+uvx zizmor@latest .github/
 
+# Run checks
+uvx cffconvert --validate
+npx markdownlint-cli2 --fix
+
+# run the app
 uv run marimo run src/app.py
 
-git add -A
-uv run pre-commit run --all-files
-# rerun if changes made
-uv run pre-commit run --all-files
+# Generate the Marimo application inside the Zensical source tree
+uv run marimo export html-wasm src/app.py -o docs/app --mode run
+# Answer y to overwrite existing...
 
-uv run python -m pytest
-uv run ty check
+# Verify the exported application
+Test-Path docs/app/index.html
+Test-Path docs/app/public/data.toml
+
+# Build the complete website
 uv run python -m zensical build
+
+# Verify both entry points
+Test-Path site/index.html
+Test-Path site/app/index.html
 ```
 
 ### Task 3. Commit, push, tag
@@ -96,7 +116,8 @@ git push origin :refs/tags/vX.Z.Y
 
 ## Links
 
-[Unreleased]: https://github.com/pup-pack/professional-python-project-explainer/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/pup-pack/professional-python-project-explainer/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/pup-pack/professional-python-project-explainer/releases/tag/v0.1.1
 [0.1.0]: https://github.com/pup-pack/professional-python-project-explainer/releases/tag/v0.1.0
 
 <!-- markdownlint-enable MD024 -->

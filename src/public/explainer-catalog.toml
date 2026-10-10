@@ -111,13 +111,18 @@ rationale = "Defines consistent indentation, line endings, and final newlines ac
 
 [names.".pre-commit-config.yaml"]
 attention = false
-description = "Pre-commit hook configuration."
-rationale = "Runs formatters and linters automatically before each commit."
+description = "Git hook configuration for pre-commit."
+rationale = "Defines checks that pre-commit runs automatically before commits when its Git hooks are installed."
 
 [names.".markdownlint.json"]
 attention = false
 description = "Markdown lint configuration."
 rationale = "Defines the style rules applied to Markdown files."
+
+[names."prek.toml"]
+attention = false
+description = "Git hook configuration for prek."
+rationale = "Defines checks that prek runs automatically before commits when its Git hooks are installed."
 
 [names."zensical.toml"]
 attention = false

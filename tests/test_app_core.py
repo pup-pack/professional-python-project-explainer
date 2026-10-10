@@ -71,10 +71,10 @@ def make_annotations() -> dict[str, Any]:
 
 
 def test_repo_url_helpers() -> None:
-    repo_url = "https://github.com/denisecase/datafun-01-foundations"
+    repo_url = "https://github.com/pup-pack/datafun-01-foundations"
 
     assert get_repo_name(repo_url) == "datafun-01-foundations"
-    assert get_repo_slug(repo_url) == "denisecase/datafun-01-foundations"
+    assert get_repo_slug(repo_url) == "pup-pack/datafun-01-foundations"
 
 
 def test_annotation_resolution_precedence() -> None:
