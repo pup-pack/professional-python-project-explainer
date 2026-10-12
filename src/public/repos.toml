@@ -1,6 +1,9 @@
 [repos]
 urls = [
 
+    "https://github.com/pup-pack/professional-python-project-explainer",
+    "https://github.com/denisecase/pro-analytics-02",
+
     "https://github.com/denisecase/bintel-01-intro",
     "https://github.com/denisecase/bintel-02-mining",
     "https://github.com/denisecase/bintel-03-cleaning",
