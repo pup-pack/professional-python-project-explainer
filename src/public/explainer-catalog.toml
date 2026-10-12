@@ -32,23 +32,23 @@ rationale = "Groups related files within the repository."
 
 [directories."src"]
 attention = true
-description = "Source directory holding the importable package."
-rationale = "The src layout keeps importable code separate from project tooling, so tests run against the installed package rather than the working tree."
+description = "The project's Python code directory."
+rationale = "Keeping code in its own folder separates it from configuration and tests, so tests check the code the way users will actually install it."
 
 [directories."tests"]
 attention = true
-description = "Automated test suite."
+description = "Automated tests directory."
 rationale = "Holds the project-specific tests that verify the package behaves as intended."
 
 [directories."docs"]
 attention = true
-description = "Project documentation source."
+description = "Project documentation directory."
 rationale = "Holds the authored documentation content published for the project."
 
 [directories.".github"]
 attention = false
-description = "GitHub configuration and automation."
-rationale = "Holds workflows and repository settings that GitHub reads by convention."
+description = "GitHub configuration and automation directory."
+rationale = "Holds automation workflows (and other settings files) that GitHub will look for by convention."
 
 [directories."workflows"]
 attention = false
@@ -57,18 +57,18 @@ rationale = "Each workflow file defines automation that GitHub runs on repositor
 
 [directories.".vscode"]
 attention = false
-description = "Shared Visual Studio Code settings."
+description = "Shared Visual Studio Code settings directory."
 rationale = "Gives everyone opening the project the same editor configuration and recommended extensions."
 
 [directories.".annotations"]
 attention = false
-description = "Repository annotation metadata."
+description = "Repository annotation metadata directory."
 rationale = "Separates repository annotations from source code and documentation."
 
 [directories."data"]
 attention = true
-description = "Project data directory."
-rationale = "Holds the datasets the project reads, kept under version control alongside the code that uses them."
+description = "The project's data files directory."
+rationale = "Keeps small datasets next to the code that reads them. Large or private data stays out of Git."
 
 # --------------------------------------------------------------------------
 # Files (matched by basename)
@@ -86,8 +86,9 @@ rationale = "Declares the package metadata, dependencies, and tool settings in o
 
 [names."uv.lock"]
 attention = false
-description = "Resolved dependency lock file."
-rationale = "Pins exact dependency versions so environments are reproducible; managed by uv, not edited by hand."
+description = "Exact versions of every package the project uses."
+rationale = "Lets everyone rebuild the same environment. A tool writes this file; it is not edited by hand."
+
 
 [names.".python-version"]
 attention = false
@@ -104,6 +105,11 @@ attention = false
 description = "Git path attributes."
 rationale = "Normalizes line endings and marks how Git should treat specific paths."
 
+[names.".gitkeep"]
+attention = false
+description = "Placeholder that keeps an empty folder in Git."
+rationale = "Git does not track empty folders, so a placeholder file is added to keep the folder in the repository."
+
 [names.".editorconfig"]
 attention = false
 description = "Shared editor configuration."
@@ -111,13 +117,33 @@ rationale = "Defines consistent indentation, line endings, and final newlines ac
 
 [names.".pre-commit-config.yaml"]
 attention = false
-description = "Git hook configuration for pre-commit."
+description = "Git hook configuration for pre-commit (a tool we used before Prek)."
 rationale = "Defines checks that pre-commit runs automatically before commits when its Git hooks are installed."
+
+[names.".markdownlint-cli2.yaml"]
+attention = false
+description = "Markdown lint configuration file that works with npx markdownlint-cli2 --fix."
+rationale = "Runs fast, works well, but requires Node.js and npx to be installed. See also .markdownlint.json and .markdownlint.jsonc for alternative configuration formats."
 
 [names.".markdownlint.json"]
 attention = false
-description = "Markdown lint configuration."
-rationale = "Defines the style rules applied to Markdown files."
+description = "Markdown lint configuration file."
+rationale = "Defines style rules applied to Markdown files."
+
+[names.".markdownlint.jsonc"]
+attention = false
+description = "Markdown lint configuration file using JSON with comments (JSONC)."
+rationale = "Defines style rules applied to Markdown files."
+
+[names.".pytest.toml"]
+attention = false
+description = "Pytest configuration file."
+rationale = "Configures pytest behavior."
+
+[names.".ruff.toml"]
+attention = false
+description = "Ruff configuration file."
+rationale = "Configures ruff behavior, such as linting rules and file inclusion/exclusion."
 
 [names."prek.toml"]
 attention = false
@@ -152,7 +178,7 @@ rationale = "Documents how AI tools were used in the project."
 [names."conftest.py"]
 attention = false
 description = "Shared pytest fixtures and configuration."
-rationale = "Provides fixtures available to the whole test suite; infrastructure rather than a test itself."
+rationale = "The test runner loads this file automatically, so every test can use the same setup without importing it."
 
 [names."__init__.py"]
 attention = false
@@ -161,13 +187,8 @@ rationale = "Marks a directory as an importable Python package."
 
 [names."py.typed"]
 attention = false
-description = "Typing marker."
+description = "Empty file used to signal to type checkers that the code is well typed."
 rationale = "Signals that the package ships inline type information for type checkers."
-
-[names.".gitkeep"]
-attention = false
-description = "Directory placeholder."
-rationale = "Keeps an otherwise-empty directory under version control."
 
 # --------------------------------------------------------------------------
 # Globs (checked in listed order; * also spans /)
@@ -193,8 +214,8 @@ rationale = "Authored documentation content for the project."
 
 [paths."docs/api.md"]
 attention = false
-description = "API documentation page."
-rationale = "Provides an overview of the project's API for developers."
+description = "API documentation page that describes the project code."
+rationale = "Autogenerated from the project's Python docstrings. Helps developers who want to use the project's code."
 
 [paths."docs/concepts.md"]
 attention = true
@@ -204,7 +225,7 @@ rationale = "Provides an overview of the project's key concepts."
 [paths."docs/data-card.md"]
 attention = true
 description = "Data card documentation page."
-rationale = "Provides an overview of the project's data card for developers."
+rationale = "Provides an overview of the project's data card for developers. Helps readers judge whether the data fits their use before relying on the results."
 
 [paths."docs/index.md"]
 attention = true

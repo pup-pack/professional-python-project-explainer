@@ -78,7 +78,7 @@ uv run marimo run src/app.py
 
 # Generate the Marimo application inside the Zensical source tree
 uv run marimo export html-wasm src/app.py -o docs/app --mode run
-# Answer y as needed to overwrite existing...
+# Type y to overwrite as needed
 
 # Verify the exported application
 Test-Path docs/app/index.html

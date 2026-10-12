@@ -1,11 +1,52 @@
 [repos]
 urls = [
+
+    "https://github.com/denisecase/bintel-01-intro",
+    "https://github.com/denisecase/bintel-02-mining",
+    "https://github.com/denisecase/bintel-03-cleaning",
+    "https://github.com/denisecase/bintel-04-warehouse",
+    "https://github.com/denisecase/bintel-05-reporting",
+    "https://github.com/denisecase/bintel-06-storytelling",
+
+    "https://github.com/denisecase/cintel-01-getting-started",
+    "https://github.com/denisecase/cintel-02-static-anomalies",
+    "https://github.com/denisecase/cintel-03-signal-design",
+    "https://github.com/denisecase/cintel-04-rolling-monitoring",
+    "https://github.com/denisecase/cintel-05-drift-detection",
+    "https://github.com/denisecase/cintel-06-continuous-intelligence",
+    "https://github.com/denisecase/cintel-stock-response",
+    "https://github.com/denisecase/fetch-data-weather",
+
+    "https://github.com/denisecase/databases-for-analytics",
+    "https://github.com/denisecase/databases-for-analytics-app",
+
     "https://github.com/denisecase/datafun-01-foundations",
     "https://github.com/denisecase/datafun-02-automation",
     "https://github.com/denisecase/datafun-03-analytics",
     "https://github.com/denisecase/datafun-04-eda",
     "https://github.com/denisecase/datafun-05-sql",
     "https://github.com/denisecase/datafun-06-ml",
-    "https://github.com/denisecase/databases-for-analytics",
-    "https://github.com/denisecase/databases-for-analytics-app",
+
+    "https://github.com/denisecase/ml-01-intro",
+    "https://github.com/denisecase/ml-02-features",
+    "https://github.com/denisecase/ml-03-classification",
+    "https://github.com/denisecase/ml-04-regression",
+    "https://github.com/denisecase/ml-05-ensembles",
+    "https://github.com/denisecase/ml-06-serving",
+    "https://github.com/denisecase/ml-07-applied",
+
+    "https://github.com/denisecase/nlp-01-getting-started",
+    "https://github.com/denisecase/nlp-02-text-preprocessing",
+    "https://github.com/denisecase/nlp-03-text-exploration",
+    "https://github.com/denisecase/nlp-04-api-text-data",
+    "https://github.com/denisecase/nlp-05-web-documents",
+    "https://github.com/denisecase/nlp-06-nlp-pipeline",
+    "https://github.com/denisecase/toy-gpt-exploration",
+
+    "https://github.com/denisecase/streaming-01-foundations",
+    "https://github.com/denisecase/streaming-02-kafka",
+    "https://github.com/denisecase/streaming-03-analytics",
+    "https://github.com/denisecase/streaming-04-visualization",
+    "https://github.com/denisecase/streaming-05-storage",
+    "https://github.com/denisecase/streaming-06-scenarios",
 ]
